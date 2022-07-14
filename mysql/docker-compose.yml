@@ -1,0 +1,24 @@
+version: '3'
+services:
+  tileserver: # should be equal to the name of the folder name this compose is in
+    #image: maptiler/tileserver-gl
+    image: mysql:8.0.29-debian
+    command: --default-authentication-plugin=caching_sha2_password
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+    - ./data:/var/lib/mysql # the name of the folder on the host needs to have the name 'data' and it should contain the files you want to persist between docker container builds.
+    - ./config:/etc/mysql:ro
+    - ./initdb.d:/docker-entrypoint-initdb.d:ro
+    restart: unless-stopped
+  
+  admin:
+    image: adminer
+    restart: unless-stopped
+    ports:
+      - 8080:8080
+
+
+networks: # this needs to be added as we spin off a default network 'trufi-website' to connect this module to the reverse proxy nginx
+  default:
+    name: trufi-website
