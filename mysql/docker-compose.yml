@@ -1,7 +1,7 @@
 version: '3'
+
 services:
-  tileserver: # should be equal to the name of the folder name this compose is in
-    #image: maptiler/tileserver-gl
+  mysql: # should be equal to the name of the folder name this compose is in
     image: mysql:8.0.29-debian
     command: --default-authentication-plugin=caching_sha2_password
     environment:
@@ -17,7 +17,6 @@ services:
     restart: unless-stopped
     ports:
       - 8080:8080
-
 
 networks: # this needs to be added as we spin off a default network 'trufi-website' to connect this module to the reverse proxy nginx
   default:
