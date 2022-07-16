@@ -3,7 +3,7 @@ version: '3'
 services:
   mysql: # should be equal to the name of the folder name this compose is in
     image: mysql:8.0.29-debian
-    command: --default-authentication-plugin=caching_sha2_password
+    command: --default-authentication-plugin=caching_sha2_password --secure-file-priv=NULL --character-set-server=utf8
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     volumes:
