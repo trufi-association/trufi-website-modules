@@ -12,7 +12,7 @@ services:
     - ./initdb.d:/docker-entrypoint-initdb.d:ro
     restart: unless-stopped
   
-  admin:
+  mysqladmin:
     image: adminer
     restart: unless-stopped
     ports:
