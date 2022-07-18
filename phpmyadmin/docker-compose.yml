@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  sqladmin:
+    image: phpmyadmin:latest-alpine # for security reason it should be able to update this container automatically on 'docker-compose pull && docker-compose up'
+    environment:
+      PMA_ARBITRARY: 1
+    ports:
+      - 8080:80
+    restart: unless-stopped
+
+networks: # this needs to be added as we spin off a default network 'trufi-website' to connect this module to the reverse proxy nginx
+  default:
+    name: trufi-website

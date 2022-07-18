@@ -11,12 +11,6 @@ services:
     - ./config:/etc/mysql:ro
     - ./initdb.d:/docker-entrypoint-initdb.d:ro
     restart: unless-stopped
-  
-  mysqladmin:
-    image: adminer
-    restart: unless-stopped
-    ports:
-      - 8080:8080
 
 networks: # this needs to be added as we spin off a default network 'trufi-website' to connect this module to the reverse proxy nginx
   default:
