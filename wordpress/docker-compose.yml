@@ -8,7 +8,7 @@ services:
       WORDPRESS_DB_PASSWORD: ${WP_DBPASSWORD}
       WORDPRESS_DB_NAME: ${WP_DBNAME}
     volumes:
-    - ./data:/var/www # the name of the folder on the host needs to have the name 'data' and it should contain the files you want to persist between docker container builds.
+    - ./data:/var/www/html # the name of the folder on the host needs to have the name 'data' and it should contain the files you want to persist between docker container builds.
     restart: unless-stopped
 
 networks: # this needs to be added as we spin off a default network 'trufi-website' to connect this module to the reverse proxy nginx
