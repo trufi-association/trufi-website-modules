@@ -1,0 +1,11 @@
+version: '3'
+services:
+  php8: # should be equal to the name of the folder name this compose is in
+    image: php:8.0-fpm
+    volumes:
+    - ./data:/var/www/html # the name of the folder on the host needs to have the name 'data' and it should contain the files you want to persist between docker container builds.
+    restart: unless-stopped
+
+networks: # this needs to be added as we spin off a default network 'trufi-website' to connect this module to the reverse proxy nginx
+  default:
+    name: trufi-website
