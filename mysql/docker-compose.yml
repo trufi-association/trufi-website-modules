@@ -5,7 +5,7 @@ services:
     image: mysql:8.0.29-debian
     command: --default-authentication-plugin=caching_sha2_password --secure-file-priv=NULL --character-set-server=utf8
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
     volumes:
     - ./data:/var/lib/mysql # the name of the folder on the host needs to have the name 'data' and it should contain the files you want to persist between docker container builds.
     - ./config:/etc/mysql:ro
